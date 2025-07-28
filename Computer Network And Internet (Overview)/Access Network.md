@@ -64,3 +64,11 @@
 5. 5G 고정 무선 (5G Fixed Wireless, 5G-FW)
    - 빔 포밍(Beam-Forming) 기술 사용
    - 서비스 제공자의 기지국에서 가정 내 모뎀으로 데이터를 무선으로 전송
+
+6. LAN (Local Area Network) : 일반적으로 종단 시스템을 가장자리 라우터에 연결하는 사용
+   - 이더넷은 이더넷 스위치에 연결하기 위해 꼬임 상선 사용
+   - 무선 랜 환경에서 무선 사용자들은 기업 네트워크(대부분 유선 이더넷 포함)에 연결된 AP(Access Point)로 패킷을 송신 / 수신하고, 이 AP는 유선 네트워크에 다시 연결
+   - 무선 랜(Wireless LAN) 사용자들은 일반적으로 AP 수십 미터 반경 내 있어야 함
+<div align="center">
+<img src="https://github.com/user-attachments/assets/780f27b1-c385-4375-a8d8-cc97017c6e90">
+</div>
