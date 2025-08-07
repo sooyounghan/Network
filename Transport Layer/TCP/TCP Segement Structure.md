@@ -89,3 +89,50 @@
       * 이 세그먼트는 빈 데이터 필드를 가지는데, 즉, 확인 응답은 어떤 클라이언트-서버 데이터와 함께 피기백되지 않음
       * 세그먼트는 확인 응답 필드 안에 80을 가짐 (순서 번호 79 바이트를 통해 바이트의 스트림을 클라이언트가 수신했기 때문이므로, 이제는 80으로 시작하는 바이트를 기다림)
       * TCP가 순서 번호 필드를 가지므로 세그먼트 역시 어떤 순서 번호를 가져야 함 (데이터를 포함하지 않더라도 가져야 함)
+
+-----
+### 왕복 시간(RTT) 예측과 타임 아웃
+-----
+1. 타임아웃은 세그먼트가 전송된 시간부터 긍정 확인응답될 때까지 시간인 연결 왕복 시간(Round-Trip Time, RTT)보다 커야 하며, 그렇지 않으면 불필요한 재전송이 발생
+2. 왕복 시간 예측
+   - SampleRTT로 표시되는 세그먼트에 대한 RTT 샘플 : 세그먼트가 송신된 시간(즉, IP에게 넘겨진 시간)으로부터 그 세그먼트에 대한 긍정 응답이 도착한 시간까지의 시간 길이
+   - 모든 전송된 세그먼트에 대해 SampleRTT를 측정하는 대신, 대부분의 TCP는 한 번에 하나의 SampleRTT 측정만을 시행 (즉, 어떤 시점에서 SampleRTT는 전송되었지만, 현재까지 확인 응답이 없는 세그먼트 중 하나에 대해서만 측정되며, 이는 대략 왕복 시간마다 SampleRTT의 새로운 값을 얻게 함)
+   - TCP는 재전송한 세그먼트에 대한 SampleRTT는 계산하지 않으며, 한 번 전송된 세그먼트에 대해서만 측정
+   - SampleRTT 값은 라우터에서의 혼잡과 종단 시스템에서의 부하 변화 때문에 세그먼트마다 다르며, 불규칙적인 값이므로 대체로 RTT를 추정하기 위해 SampleRTT의 평균값을 채택
+   - 따라서, TCP는 SampleRTT 값의 평균(EstimatedRTT)을 유지
+     + 긍정 확인 응답을 수신하고 새로운 SampleRTT를 획득하자마자 TCP는 다음 공식에 따라 갱신
+<div align="center">
+<img src="https://github.com/user-attachments/assets/c4b72427-c343-4fa6-a3d6-b3224c618b6b">
+</div>
+
+   - EstimatedRTT의 새로운 값은 이전 값과 새로운 값의 가중된 조합이며, 권장되는 값은 α = 0.125
+   - 즉, EstimatedRTT는 SampleRTT 값의 가중 평균(Weighted Average)
+     + 가중평균은 예전 샘플보다 최근 샘플에 더 높은 가중치를 줌
+     + 최신 샘플들은 네트워크 상에 현재 혼잡을 더 잘 반영함
+     + 통계에서는 이런 평균을 지수적 가중 이동 평균(Exponential Weighted Moving Average, EWMA) : 주어진 SampleRTT의 가중치가 갱신 절차에 진행됨에 따라 빠르게 지수적으로 감소하므로 EWMA에서 지수적이라는 용어가 사용
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/19140bcd-fd9f-49c1-98d8-3697e5db686a">
+</div>
+
+   - SampleRTT의 변화가 EstimatedRTT 계산에서 완만하게 됨을 보여줌
+   - RTT 예측 외에 RTT의 변환율을 측정하는 것도 유용 : RTT 변화율을 의미하는 DevRTT를 SampleRTT가 EstimatedRTT로부터 얼마나 많이 벗어났는지에 대한 예측으로 정의
+<div align="center">
+<img src="https://github.com/user-attachments/assets/f653451c-bd2d-49c4-98f0-a31f4771bc94">
+</div>
+
+   - DevRTT는 SampleRTT와 EstimatedRTT 값 차이의 EWMA
+   - 만일 SampleRTT 값이 어떠한 변화도 없다면, DevRTT는 작을 것이며, 그렇지 않다면 클 것이고, β = 0.2가 권장값
+
+3. 재전송 타임아웃 주기의 설정과 관리
+   - TCP 타임 아웃 주기는 EstimatedRTT보다 너무 크면 안 되며, 너무 크면 세그먼트를 잃었을 때 TCP는 즉각적인 세그먼트 재전송을 하지 않게 됨
+   - 이 때문에, 애플리케이션에서 전송 지연이 발생하므로, EstimatedRTT에 약간의 여윳값을 더한 값으로 설정하는 것이 바람직
+   - SampleRTT 값에 많은 변동이 있을 때 여윳값이 커야 하며, 변동이 작을 때는 작아야 함 (즉, DevRTT 값이 그 역할을 함)
+   - 이러한 모든 고려사항은 재전송 타임아웃 주기를 결정하는 TCP 방식에 사용
+<div align="center">
+<img src="https://github.com/user-attachments/assets/48858b36-02b4-4795-9c85-b00ef39a3424">
+</div>
+
+   - 초기 TimeoutInterval의 값으로 1초를 권고
+   - 타임아웃이 발생하면 TimeoutInterval의 값은 두 배로 하여 조만간 확인 응답할 후속 세그먼트에게 발생할 수 있는 조기 타임아웃을 피다로고 함
+   - 그러나 세그먼트가 수신되고, EstimatedRTT가 수정되면 TimeoutInterval은 다시 위 공식에 따라 계산
