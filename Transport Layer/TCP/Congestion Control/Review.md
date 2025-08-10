@@ -3,7 +3,7 @@
 -----
 1. 연결이 시작되고 초기 슬로 스타트 기간을 무시하고, 손실이 타임아웃이 아니라 3개의 중복 ACK로 표시된다고 가정
 2. TCP 혼잡 제어는 RTT마다 1 MSS씩 cwnd의 선형(가법적인) 증가와 3개의 중복 ACK 이벤트에서 cwnd의 절반화(승법적 감소)
-3. 이러한 이유로 TCP 혼잡 제어는 가법적 증가, 승법적 가소(Additive-Increase, Multiplicative Decrease, AIMD)의 혼잡 제어 방식이라고 함
+3. 이러한 이유로 TCP 혼잡 제어는 가법적 증가, 승법적 감소(Additive-Increase, Multiplicative Decrease, AIMD)의 혼잡 제어 방식이라고 함
 <div align="center">
 <img src="https://github.com/user-attachments/assets/82577389-c7b3-4d98-9ac9-a7e905d9ae05">
 </div>
