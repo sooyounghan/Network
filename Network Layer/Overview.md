@@ -29,7 +29,7 @@
 4. 라우팅(Routing) : 네트워크 전반에 걸쳐 출발지에서 목적지까지 데이터그램의 종단 간 경로를 결정하는 것으로, 더 긴 시간(보통 초) 단위를 갖기에 소프트웨어에서 실행
 5. 포워딩 테이블(Forwarding Table) : 네트워크 라우터에서 필수 불가결한 요소
 <div align="center">
-<img src="https://github.com/user-attachments/assets/ba15950f-db64-4118-8441-7b3d37f6240">
+<img src="https://github.com/user-attachments/assets/6a71567a-499b-4901-b354-168693a0a191">
 </div>
 
    - 라우터는 도착하는 패킷 헤더의 필드값을 조사하여 패킷을 전달
