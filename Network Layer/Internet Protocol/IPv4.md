@@ -169,7 +169,7 @@
 <img src="https://github.com/user-attachments/assets/70875a49-cbeb-449d-b99e-38f8af6a0ac4">
 </div>
 
-   - IP 주소 공간을 관리하고 ISP와 다른 조직에 주소 블록을 할당하는 최상위 국제 기관 : IP 주소는 ICANN(Internet Corporation for Assignedf Names and Numbers) 기반으로 관리
+   - IP 주소 공간을 관리하고 ISP와 다른 조직에 주소 블록을 할당하는 최상위 국제 기관 : IP 주소는 ICANN(Internet Corporation for Assigned Names and Numbers) 기반으로 관리
      + IP 주소 할당과 DNS 루트 서버 관리 역할을 함
      + 도메인 이름을 할당하고 도메인 이름 분쟁을 해결
      + 지역 인터넷 등록소에서 지역 내 주소 할당 / 관리 제어
