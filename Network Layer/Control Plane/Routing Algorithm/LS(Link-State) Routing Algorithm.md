@@ -58,7 +58,7 @@
 
 5. 발생할 수 있는 문제
 <div align="center">
-<img src="https://github.com/user-attachments/assets/3d20ef88-80c3-4179-b93e-5c8f65eefc8">
+<img src="https://github.com/user-attachments/assets/43a56dbc-f7ed-4475-a237-e1687d4c4e15">
 </div>
 
    - 단순한 네트워크 토폴리지로서 링크 비용은 링크를 통과하는 트래픽 부하와 같고, 이는 패킷이 겪을 수 있는 지연 시간 반영 (링크 비용은 대칭적이지 않음)
