@@ -9,13 +9,11 @@
 ### OpenDayLight 컨트롤러
 -----
 <div align="center">
-<img src="">
+<img src="https://github.com/user-attachments/assets/6a9f736b-d8d8-475a-a9a5-929d0271875a">
 </div>
 
-<img width="1822" height="1510" alt="image" src="https://github.com/user-attachments/assets/6a9f736b-d8d8-475a-a9a5-929d0271875a" />
-
 1. ODL의 기본 네트워크 서비스 기능들은 컨트롤러 핵심부에 있으며, 네트워크 전역 상태 관리 기능과 밀접하게 관련
-2. 서비스 추상 계층(Service Abstraction Layer, SAL)은 컨트롤러의 신경으로 컨트롤러 구성 오ㅛ소와 애플리케이션이 서로의 서비스를 호출하고 그들이 생성한 이벤트에 대한 알림을 받을 수 있도록 함
+2. 서비스 추상 계층(Service Abstraction Layer, SAL)은 컨트롤러의 신경으로 컨트롤러 구성 요소와 애플리케이션이 서로의 서비스를 호출하고 그들이 생성한 이벤트에 대한 알림을 받을 수 있도록 함
    - SNMP(Simple Network Management Protocol) 및 NETCONF(Network Configuration)과 같은 ODL 컨트롤러와 제어 장치 간 프로토콜들에게 균일한 추상 인터페이스를 제공
    - OVSDB(Open VSwitch Database Management Protocol)는 SND 기술의 중요 응용 분야인 데이터 센터 스위칭을 관리하는 데 사용
 3. 네트워크 조정 및 애플리케이션 부는 데이터 평면의 포워딩과 방화벽 및 로드 밸런싱과 같은 서비스들이 제어 장치에서 어떻게 수행될지 결정
