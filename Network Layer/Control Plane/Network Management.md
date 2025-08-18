@@ -4,10 +4,8 @@
 1. 적절한 비용으로 실시간, 운용 성능, 서비스 품질 등의 요구사항을 만족시키기 위해 네트워크와 구성 요소 자원을 감시, 테스트, 폴링, 설정, 분석, 평가, 제어하는 하드웨어, 소프트웨어, 인간 요소 등을 배치하고 통합, 조정하는 것
 2. 네트워크 관리 프레임워크
 <div align="center">
-<img src="">
+<img src="https://github.com/user-attachments/assets/42206ec4-2277-4e1a-8d53-d249515bf098">
 </div>
-
-<img width="2028" height="1697" alt="image" src="https://github.com/user-attachments/assets/42206ec4-2277-4e1a-8d53-d249515bf098" />
 
   - 관리 서버 (Managing Server)
     + 네트워크 운영 센터(Network Operations Center, NOC)의 중앙 집중형 네트워크 관리 스테이션에서 동작하는, 일반적으로 네트워크 관리자(사람)와 상호작용 하는 애플리케이션
