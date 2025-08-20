@@ -12,6 +12,10 @@
      + 따라서 FDM은 하나의 큰 R bps 채널로부터 N개의 R / N bps의 작은 채널로 만듬
      + FDM은 충돌을 피하고 N개 노드에게 대역폭을 균등하게 분할
 
+<div align="center">
+<img src="https://github.com/user-attachments/assets/9b08d4ff-0c40-44bd-ba87-1bdef89d430b">
+</div>
+
 2. TDM과 FDM의 단점 : 전송할 패킷을 가진 노드가 단 하나 일지라도 노드는 R / N의 대역폭으로 한정
 3. 코드 분할 다중 접속 (Code Division Multiple Access, CDMA)
    - 다른 코드를 각 노드에게 할당
