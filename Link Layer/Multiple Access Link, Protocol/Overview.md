@@ -14,10 +14,8 @@
 
 4. 다중 접속 프로토콜(Multiple Access Protocol)
 <div align="center">
-<img src="">
+<img src="https://github.com/user-attachments/assets/ab729cbe-0423-410b-9370-7bc9b86b83aa">
 </div>
-
-<img width="2117" height="1711" alt="image" src="https://github.com/user-attachments/assets/ab729cbe-0423-410b-9370-7bc9b86b83aa" />
 
   - 유선 및 무선 접속 네트워크와 위성 네트워크를 포함하는 다양한 네트워크 설정 시 필요하며, 노드는 기술적으로 자신의 어댑터를 통해 브로드캐스트로 접근하지만, 여기서는 송신 장치나 수신 장치로 처리
   - 수백 혹은 수천 개의 노드가 브로드캐스트 채널에서 직접 통신 가능
