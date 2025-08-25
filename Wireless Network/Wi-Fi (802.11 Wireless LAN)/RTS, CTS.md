@@ -2,7 +2,7 @@
 ### RTS(Request To Send), CTS(Clear To Send)
 -----
 1. 802.11 MAC 프로토콜은 숨은 터미널이 존재하더라도 충돌을 회피할 수 있는 훌륭한 예약 방법 제공
-2. 2개의 무선 스에티션과 하나의 AP가 존재
+2. 2개의 무선 스테이션과 하나의 AP가 존재
 <div align="center">
 <img src="https://github.com/user-attachments/assets/0dca4d12-9df9-4186-8f77-6554eba7ec55">
 </div>
