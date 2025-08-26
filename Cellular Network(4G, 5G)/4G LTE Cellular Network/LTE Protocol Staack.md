@@ -12,7 +12,7 @@
 3. LTE 이동 장치의 링크 계층의 3개 부계층
    - 패킷 데이터 융합 (Packet Data Convergence)
      + 링크 계층 부계층 중 최상위 계층으로 IP 바로 아래 위치
-     + PDCP (Packet Data Convergence Protol)는 무선 링크를 통해 전송되는 비트 수를 줄이기 위해 IP 헤더를 압 축 수행
+     + PDCP (Packet Data Convergence Protol)는 무선 링크를 통해 전송되는 비트 수를 줄이기 위해 IP 헤더를 압축 수행
      + LTE 이동 장치가 네트워크에 처음 연결될 때 이동 장치와 이동성 관리 개체(MME) 사이의 시그널링 메세지 교환을 통해 키를 사용한 / 암호화 기능 수행
 
    - 무선 링크 제어 (Radio Link Protocol, RLP)
