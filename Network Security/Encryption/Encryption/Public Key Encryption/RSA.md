@@ -60,3 +60,55 @@
 </div>
 
    - 매우 간단함에도 불구하고, 매우 큰 수들이 나타남
+
+-----
+### 세션 키
+-----
+1. RSA에 필요한 지수 연산은 시간이 많이 필요한 작업으로, 실제로 RSA는 종종 대칭키 암호와 함께 사용
+2. 예를 들어, 앨리스가 밥에게 대량의 암호화 데이터를 보내고자 할 때, 먼저 앨리스는 데이터 암호화에 사용할 키를 고르는데 이를 세션 키(Session Key)라고 하며 $K_{S}$로 표기
+   - 세션키는 대칭키 암호화(예) DES나 AES)에 사용될 공유 비밀키 이므로 앨리스는 밥에게 이를 알려줘야 함
+   - 앨리스는 밥의 공개키로 세션키를 암호화함
+   - 즉, c = $(K_{S})^{e}$ mod n으로 계산
+   - 밥은 세션키 RSA로 암호화된 형태인 c를 받고, 이를 복호화해서 세션키 $K_{S}$를 얻음
+   - 따라서, 밥은 이제 앨리스가 데이터 암호화에 사용한 세션키를 사용
+
+-----
+### RSA의 동작
+-----
+1. n = pq이며, p와 q는 RSA 알고리즘에서 사용되는 큰 소수
+2. RSA 암호화에서 메세지(고유한 하나의 정수로 표현되는) m은 모듈로 n 연산을 사용해 e 제곱을 함
+<div align="center">
+<img src="https://github.com/user-attachments/assets/981c4799-9244-454b-9df1-821b7817743d">
+</div>
+
+3. 복호화는 이 값에 다시 모듈로 n을 사용해 d 제곱을 하는데, 따라서 암호화 단계와 복호화 단계를 거친 값은 $(m^{e} \bmod n)^{d} \bmod n$
+   - $(a \bmod n)^{d} \bmod n = a^{d} \bmod n$이 성립하므로, 다음과 같이 정리 가능
+   - $a = m^{e}$이면,
+<div align="center">
+<img src="https://github.com/user-attachments/assets/2543ecfe-a2da-41a2-b2d0-e263fe8e7ddb">
+</div>
+
+   - $m^{ed} \bmod n = m$은 다음과 같이 정의 가능
+     + p와 q가 소수이고, n = pq, z = (p - 1)(q - 1)이면, $x^{y} \bmod n = x^{y \bmod z} \b mod n$과 같다는 성질이 필요
+     + x = m이고, y = ed이면,
+<div align="center">
+<img src="https://github.com/user-attachments/assets/20e94cc2-7f59-44a9-8029-c2c1e8168300">
+</div>
+
+  - 여기서 ed mod z = 1이 되도록 e와 d를 선택했으므로,
+<div align="center">
+<img src="https://github.com/user-attachments/assets/62a89595-030b-495e-84a3-a0ef7b7b8018">
+</div>
+
+   - 먼저 e 제곱(암호회)를 한 다음, d 제곱(복호화)를 하면 원래 값 m을 얻게 되며, d 제곱을 하고, e 제곱을 하더라도, 즉 암호화와 복호화 순서를 바꿔서 하더라도 원래의 값 m을 얻을 수 있음
+<div align="center">
+<img src="https://github.com/user-attachments/assets/6e773f8f-898f-46da-a8c7-faa01f3661a8">
+</div>
+
+4. RSA 보안은 공개 값 n을 인수분해하여 p와 q를 찾는 빠른 알고리즘이 알려져 있지 않다는 점에 기반
+   - 만일 소수 p와 q, 그리고 주어진 공개 값 e를 알고 있다면 비밀키 d를 쉽게 찾을 수 있음
+   - 하지만, 숫자를 인수분해하는 빠른 알고리즘이 존재하는지 아닌지 확실히 알 수 없으므로, RSA 보안도 완벽히 보장된다고 할 수 없음
+
+5. 디피-헬만 알고리즘은 널리 사용되는 공개키 암호화 알고리즘
+   - 다만, 임의의 길이 메세지를 암호화할 수 없다는 점에서 RSA만큼 유용하지 않음
+   - 하지만 메세지를 암호화하기 위해 대칭 세션키를 생성하는데 사용 가능
