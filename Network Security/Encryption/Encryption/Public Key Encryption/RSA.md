@@ -89,7 +89,7 @@
 </div>
 
    - $m^{ed} \bmod n = m$은 다음과 같이 정의 가능
-     + p와 q가 소수이고, n = pq, z = (p - 1)(q - 1)이면, $x^{y} \bmod n = x^{y \bmod z} \b mod n$과 같다는 성질이 필요
+     + p와 q가 소수이고, n = pq, z = (p - 1)(q - 1)이면, $x^{y} \bmod n = x^{y \bmod z} \bmod n$과 같다는 성질이 필요
      + x = m이고, y = ed이면,
 <div align="center">
 <img src="https://github.com/user-attachments/assets/20e94cc2-7f59-44a9-8029-c2c1e8168300">
