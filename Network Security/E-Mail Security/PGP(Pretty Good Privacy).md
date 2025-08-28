@@ -1,7 +1,7 @@
 -----
 ### PGP(Pretty Good Privacy)
 -----
-1. 1991년 필 짐머만(Phil ZimmermannO이 만든 PGP(Pretty Good Privacy)는 전자메일 암호화 기법의 좋은 예
+1. 1991년 필 짐머만(Phil Zimmermann)이 만든 PGP(Pretty Good Privacy)는 전자메일 암호화 기법의 좋은 예
 2. 버전에 따라 PGP 소프트웨어는 MD5나 SHA를 메세지 요약문 계산에 사용
 3. 대칭키 암호화를 위해서는 CAST, triple-DES, IDEA를, 공개키 암호화를 위해서는 RSA를 사용
 4. PGP가 설치되면, 소프트웨어는 사용자를 위한 공개키 쌍을 만듬
